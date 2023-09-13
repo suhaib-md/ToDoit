@@ -1,0 +1,28 @@
+<%- include("./partials/header") %>
+
+<nav class="navbar bg-primary">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold" href="#">ToDoit</a>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <form action="/add/todo" method = "POST" class="d-flex">
+        <input type="text" name="todo" class="form-control bg-success-subtle" placeholder="Enter task">
+        <input type="submit" value="Add task" class="btn btn-md btn-primary mx-3">
+    </form>
+    <ul class="list-group my-5">
+        <% todo.forEach(todos => { %>
+            <li class="list-group-item d-flex justify-content-between align-items-center bg-success-subtle">
+                <%= todos.todo %>
+                <div>
+                    <a href="/update/todo/<%= todos._id %>" class="btn btn-warning btn-sm mr-2">Update</a>
+                    <a href="/delete/todo/<%= todos._id %>" class="btn btn-danger btn-sm">Delete</a>
+                </div>
+            </li>
+        <% }) %>
+    </ul>
+    
+</div>
+
+<%- include("./partials/footer") %>
